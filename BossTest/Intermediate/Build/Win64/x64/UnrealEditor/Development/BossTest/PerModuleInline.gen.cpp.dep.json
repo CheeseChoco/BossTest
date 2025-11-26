@@ -1,0 +1,14 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "c:\\users\\allja\\documents\\github\\bosstest\\bosstest\\bosstest\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\bosstest\\permoduleinline.gen.cpp",
+        "ProvidedModule": "",
+        "PCH": "c:\\users\\allja\\documents\\github\\bosstest\\bosstest\\bosstest\\intermediate\\build\\win64\\x64\\bosstesteditor\\development\\unrealed\\sharedpch.unrealed.project.valapi.valexpapi.cpp20.h.pch",
+        "Includes": [
+            "c:\\users\\allja\\documents\\github\\bosstest\\bosstest\\bosstest\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\bosstest\\definitions.bosstest.h",
+            "c:\\program files\\epic games\\ue_5.6\\engine\\source\\runtime\\core\\public\\hal\\permoduleinline.inl"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

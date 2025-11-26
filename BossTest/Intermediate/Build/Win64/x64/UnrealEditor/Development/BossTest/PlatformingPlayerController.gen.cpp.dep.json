@@ -1,0 +1,15 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "c:\\users\\allja\\documents\\github\\bosstest\\bosstest\\bosstest\\intermediate\\build\\win64\\unrealeditor\\inc\\bosstest\\uht\\platformingplayercontroller.gen.cpp",
+        "ProvidedModule": "",
+        "PCH": "c:\\users\\allja\\documents\\github\\bosstest\\bosstest\\bosstest\\intermediate\\build\\win64\\x64\\bosstesteditor\\development\\unrealed\\sharedpch.unrealed.project.valapi.valexpapi.cpp20.h.pch",
+        "Includes": [
+            "c:\\users\\allja\\documents\\github\\bosstest\\bosstest\\bosstest\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\bosstest\\definitions.bosstest.h",
+            "c:\\users\\allja\\documents\\github\\bosstest\\bosstest\\bosstest\\source\\bosstest\\variant_platforming\\platformingplayercontroller.h",
+            "c:\\users\\allja\\documents\\github\\bosstest\\bosstest\\bosstest\\intermediate\\build\\win64\\unrealeditor\\inc\\bosstest\\uht\\platformingplayercontroller.generated.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

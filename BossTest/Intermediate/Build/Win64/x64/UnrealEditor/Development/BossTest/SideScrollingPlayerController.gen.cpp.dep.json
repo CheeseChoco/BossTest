@@ -1,0 +1,23 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "c:\\users\\allja\\documents\\github\\bosstest\\bosstest\\bosstest\\intermediate\\build\\win64\\unrealeditor\\inc\\bosstest\\uht\\sidescrollingplayercontroller.gen.cpp",
+        "ProvidedModule": "",
+        "PCH": "c:\\users\\allja\\documents\\github\\bosstest\\bosstest\\bosstest\\intermediate\\build\\win64\\x64\\bosstesteditor\\development\\unrealed\\sharedpch.unrealed.project.valapi.valexpapi.cpp20.h.pch",
+        "Includes": [
+            "c:\\users\\allja\\documents\\github\\bosstest\\bosstest\\bosstest\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\bosstest\\definitions.bosstest.h",
+            "c:\\users\\allja\\documents\\github\\bosstest\\bosstest\\bosstest\\source\\bosstest\\variant_sidescrolling\\sidescrollingplayercontroller.h",
+            "c:\\program files\\epic games\\ue_5.6\\engine\\plugins\\enhancedinput\\source\\enhancedinput\\public\\inputaction.h",
+            "c:\\program files\\epic games\\ue_5.6\\engine\\plugins\\enhancedinput\\source\\enhancedinput\\public\\inputmodifiers.h",
+            "c:\\program files\\epic games\\ue_5.6\\engine\\plugins\\enhancedinput\\source\\enhancedinput\\public\\inputactionvalue.h",
+            "c:\\program files\\epic games\\ue_5.6\\engine\\plugins\\enhancedinput\\intermediate\\build\\win64\\unrealeditor\\inc\\enhancedinput\\uht\\inputactionvalue.generated.h",
+            "c:\\program files\\epic games\\ue_5.6\\engine\\plugins\\enhancedinput\\intermediate\\build\\win64\\unrealeditor\\inc\\enhancedinput\\uht\\inputmodifiers.generated.h",
+            "c:\\program files\\epic games\\ue_5.6\\engine\\plugins\\enhancedinput\\source\\enhancedinput\\public\\inputtriggers.h",
+            "c:\\program files\\epic games\\ue_5.6\\engine\\plugins\\enhancedinput\\intermediate\\build\\win64\\unrealeditor\\inc\\enhancedinput\\uht\\inputtriggers.generated.h",
+            "c:\\program files\\epic games\\ue_5.6\\engine\\plugins\\enhancedinput\\intermediate\\build\\win64\\unrealeditor\\inc\\enhancedinput\\uht\\inputaction.generated.h",
+            "c:\\users\\allja\\documents\\github\\bosstest\\bosstest\\bosstest\\intermediate\\build\\win64\\unrealeditor\\inc\\bosstest\\uht\\sidescrollingplayercontroller.generated.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

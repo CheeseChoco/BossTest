@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <None Include="..\..\BossTest.uproject" />
+    <Filter Include="Source">
+      <UniqueIdentifier>{F31BBDD1-B3E8-3BCC-9652-680E16935819}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\BossTest.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <None Include="..\..\Source\BossTestEditor.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <Filter Include="Config">
+      <UniqueIdentifier>{FA535FFB-25E1-3D20-B416-52F9BE21E06E}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Config\DefaultEditor.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultEditorPerProjectUserSettings.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultEngine.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultGame.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultInput.ini">
+      <Filter>Config</Filter>
+    </None>
+    <Filter Include="Source\BossTest">
+      <UniqueIdentifier>{C4FED77A-E886-30EB-B1E6-7AA210A5B541}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\BossTest\BossTest.Build.cs">
+      <Filter>Source\BossTest</Filter>
+    </None>
+    <ClCompile Include="..\..\Source\BossTest\BossTest.cpp">
+      <Filter>Source\BossTest</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\BossTest\BossTest.h">
+      <Filter>Source\BossTest</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\BossTest\BossTestCharacter.cpp">
+      <Filter>Source\BossTest</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\BossTest\BossTestCharacter.h">
+      <Filter>Source\BossTest</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\BossTest\BossTestGameMode.cpp">
+      <Filter>Source\BossTest</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\BossTest\BossTestGameMode.h">
+      <Filter>Source\BossTest</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\BossTest\BossTestPlayerController.cpp">
+      <Filter>Source\BossTest</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\BossTest\BossTestPlayerController.h">
+      <Filter>Source\BossTest</Filter>
+    </ClInclude>
+    <Filter Include="Source\BossTest\Variant_Combat">
+      <UniqueIdentifier>{6325373C-D7EA-3211-9E48-C9553D7DAB3E}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\BossTest\Variant_Combat\CombatCharacter.cpp">
+      <Filter>Source\BossTest\Variant_Combat</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\BossTest\Variant_Combat\CombatCharacter.h">
+      <Filter>Source\BossTest\Variant_Combat</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\BossTest\Variant_Combat\CombatGameMode.cpp">
+      <Filter>Source\BossTest\Variant_Combat</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\BossTest\Variant_Combat\CombatGameMode.h">
+      <Filter>Source\BossTest\Variant_Combat</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\BossTest\Variant_Combat\CombatPlayerController.cpp">
+      <Filter>Source\BossTest\Variant_Combat</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\BossTest\Variant_Combat\CombatPlayerController.h">
+      <Filter>Source\BossTest\Variant_Combat</Filter>
+    </ClInclude>
+    <Filter Include="Source\BossTest\Variant_Combat\AI">
+      <UniqueIdentifier>{DD6FE2C5-D983-31CC-A041-56A18C47CF20}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\BossTest\Variant_Combat\AI\CombatAIController.cpp">
+      <Filter>Source\BossTest\Variant_Combat\AI</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\BossTest\Variant_Combat\AI\CombatAIController.h">
+      <Filter>Source\BossTest\Variant_Combat\AI</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\BossTest\Variant_Combat\AI\CombatEnemy.cpp">
+      <Filter>Source\BossTest\Variant_Combat\AI</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\BossTest\Variant_Combat\AI\CombatEnemy.h">
+      <Filter>Source\BossTest\Variant_Combat\AI</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\BossTest\Variant_Combat\AI\CombatEnemySpawner.cpp">
+      <Filter>Source\BossTest\Variant_Combat\AI</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\BossTest\Variant_Combat\AI\CombatEnemySpawner.h">
+      <Filter>Source\BossTest\Variant_Combat\AI</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\BossTest\Variant_Combat\AI\CombatStateTreeUtility.cpp">
+      <Filter>Source\BossTest\Variant_Combat\AI</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\BossTest\Variant_Combat\AI\CombatStateTreeUtility.h">
+      <Filter>Source\BossTest\Variant_Combat\AI</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\BossTest\Variant_Combat\AI\EnvQueryContext_Player.cpp">
+      <Filter>Source\BossTest\Variant_Combat\AI</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\BossTest\Variant_Combat\AI\EnvQueryContext_Player.h">
+      <Filter>Source\BossTest\Variant_Combat\AI</Filter>
+    </ClInclude>
+    <Filter Include="Source\BossTest\Variant_Combat\Animation">
+      <UniqueIdentifier>{C92D0BC3-538F-34AA-BE2B-320A067503BB}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\BossTest\Variant_Combat\Animation\AnimNotify_CheckChargedAttack.cpp">
+      <Filter>Source\BossTest\Variant_Combat\Animation</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\BossTest\Variant_Combat\Animation\AnimNotify_CheckChargedAttack.h">
+      <Filter>Source\BossTest\Variant_Combat\Animation</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\BossTest\Variant_Combat\Animation\AnimNotify_CheckCombo.cpp">
+      <Filter>Source\BossTest\Variant_Combat\Animation</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\BossTest\Variant_Combat\Animation\AnimNotify_CheckCombo.h">
+      <Filter>Source\BossTest\Variant_Combat\Animation</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\BossTest\Variant_Combat\Animation\AnimNotify_DoAttackTrace.cpp">
+      <Filter>Source\BossTest\Variant_Combat\Animation</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\BossTest\Variant_Combat\Animation\AnimNotify_DoAttackTrace.h">
+      <Filter>Source\BossTest\Variant_Combat\Animation</Filter>
+    </ClInclude>
+    <Filter Include="Source\BossTest\Variant_Combat\Gameplay">
+      <UniqueIdentifier>{2DC27772-054A-3D9C-8948-3A8AFD90C504}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\BossTest\Variant_Combat\Gameplay\CombatActivationVolume.cpp">
+      <Filter>Source\BossTest\Variant_Combat\Gameplay</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\BossTest\Variant_Combat\Gameplay\CombatActivationVolume.h">
+      <Filter>Source\BossTest\Variant_Combat\Gameplay</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\BossTest\Variant_Combat\Gameplay\CombatCheckpointVolume.cpp">
+      <Filter>Source\BossTest\Variant_Combat\Gameplay</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\BossTest\Variant_Combat\Gameplay\CombatCheckpointVolume.h">
+      <Filter>Source\BossTest\Variant_Combat\Gameplay</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\BossTest\Variant_Combat\Gameplay\CombatDamageableBox.cpp">
+      <Filter>Source\BossTest\Variant_Combat\Gameplay</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\BossTest\Variant_Combat\Gameplay\CombatDamageableBox.h">
+      <Filter>Source\BossTest\Variant_Combat\Gameplay</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\BossTest\Variant_Combat\Gameplay\CombatDummy.cpp">
+      <Filter>Source\BossTest\Variant_Combat\Gameplay</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\BossTest\Variant_Combat\Gameplay\CombatDummy.h">
+      <Filter>Source\BossTest\Variant_Combat\Gameplay</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\BossTest\Variant_Combat\Gameplay\CombatLavaFloor.cpp">
+      <Filter>Source\BossTest\Variant_Combat\Gameplay</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\BossTest\Variant_Combat\Gameplay\CombatLavaFloor.h">
+      <Filter>Source\BossTest\Variant_Combat\Gameplay</Filter>
+    </ClInclude>
+    <Filter Include="Source\BossTest\Variant_Combat\Interfaces">
+      <UniqueIdentifier>{01DDB758-2E0B-390F-A1C5-48AA17C3669D}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\BossTest\Variant_Combat\Interfaces\CombatActivatable.cpp">
+      <Filter>Source\BossTest\Variant_Combat\Interfaces</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\BossTest\Variant_Combat\Interfaces\CombatActivatable.h">
+      <Filter>Source\BossTest\Variant_Combat\Interfaces</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\BossTest\Variant_Combat\Interfaces\CombatAttacker.cpp">
+      <Filter>Source\BossTest\Variant_Combat\Interfaces</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\BossTest\Variant_Combat\Interfaces\CombatAttacker.h">
+      <Filter>Source\BossTest\Variant_Combat\Interfaces</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\BossTest\Variant_Combat\Interfaces\CombatDamageable.cpp">
+      <Filter>Source\BossTest\Variant_Combat\Interfaces</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\BossTest\Variant_Combat\Interfaces\CombatDamageable.h">
+      <Filter>Source\BossTest\Variant_Combat\Interfaces</Filter>
+    </ClInclude>
+    <Filter Include="Source\BossTest\Variant_Combat\UI">
+      <UniqueIdentifier>{68CFB11D-6C9C-35A5-BC27-35556E9B0471}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\BossTest\Variant_Combat\UI\CombatLifeBar.cpp">
+      <Filter>Source\BossTest\Variant_Combat\UI</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\BossTest\Variant_Combat\UI\CombatLifeBar.h">
+      <Filter>Source\BossTest\Variant_Combat\UI</Filter>
+    </ClInclude>
+    <Filter Include="Source\BossTest\Variant_Platforming">
+      <UniqueIdentifier>{E0B93D24-D24F-3972-8242-F74E2329C036}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\BossTest\Variant_Platforming\PlatformingCharacter.cpp">
+      <Filter>Source\BossTest\Variant_Platforming</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\BossTest\Variant_Platforming\PlatformingCharacter.h">
+      <Filter>Source\BossTest\Variant_Platforming</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\BossTest\Variant_Platforming\PlatformingGameMode.cpp">
+      <Filter>Source\BossTest\Variant_Platforming</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\BossTest\Variant_Platforming\PlatformingGameMode.h">
+      <Filter>Source\BossTest\Variant_Platforming</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\BossTest\Variant_Platforming\PlatformingPlayerController.cpp">
+      <Filter>Source\BossTest\Variant_Platforming</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\BossTest\Variant_Platforming\PlatformingPlayerController.h">
+      <Filter>Source\BossTest\Variant_Platforming</Filter>
+    </ClInclude>
+    <Filter Include="Source\BossTest\Variant_Platforming\Animation">
+      <UniqueIdentifier>{13E44CA6-D647-38CF-B34F-4EEC20F37091}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\BossTest\Variant_Platforming\Animation\AnimNotify_EndDash.cpp">
+      <Filter>Source\BossTest\Variant_Platforming\Animation</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\BossTest\Variant_Platforming\Animation\AnimNotify_EndDash.h">
+      <Filter>Source\BossTest\Variant_Platforming\Animation</Filter>
+    </ClInclude>
+    <Filter Include="Source\BossTest\Variant_SideScrolling">
+      <UniqueIdentifier>{55AC2DEA-5BFD-3B54-897E-80507DEA7229}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\BossTest\Variant_SideScrolling\SideScrollingCameraManager.cpp">
+      <Filter>Source\BossTest\Variant_SideScrolling</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\BossTest\Variant_SideScrolling\SideScrollingCameraManager.h">
+      <Filter>Source\BossTest\Variant_SideScrolling</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\BossTest\Variant_SideScrolling\SideScrollingCharacter.cpp">
+      <Filter>Source\BossTest\Variant_SideScrolling</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\BossTest\Variant_SideScrolling\SideScrollingCharacter.h">
+      <Filter>Source\BossTest\Variant_SideScrolling</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\BossTest\Variant_SideScrolling\SideScrollingGameMode.cpp">
+      <Filter>Source\BossTest\Variant_SideScrolling</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\BossTest\Variant_SideScrolling\SideScrollingGameMode.h">
+      <Filter>Source\BossTest\Variant_SideScrolling</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\BossTest\Variant_SideScrolling\SideScrollingPlayerController.cpp">
+      <Filter>Source\BossTest\Variant_SideScrolling</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\BossTest\Variant_SideScrolling\SideScrollingPlayerController.h">
+      <Filter>Source\BossTest\Variant_SideScrolling</Filter>
+    </ClInclude>
+    <Filter Include="Source\BossTest\Variant_SideScrolling\AI">
+      <UniqueIdentifier>{2093BAEF-4307-3C49-9C51-DC994DEEE122}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\BossTest\Variant_SideScrolling\AI\SideScrollingAIController.cpp">
+      <Filter>Source\BossTest\Variant_SideScrolling\AI</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\BossTest\Variant_SideScrolling\AI\SideScrollingAIController.h">
+      <Filter>Source\BossTest\Variant_SideScrolling\AI</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\BossTest\Variant_SideScrolling\AI\SideScrollingNPC.cpp">
+      <Filter>Source\BossTest\Variant_SideScrolling\AI</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\BossTest\Variant_SideScrolling\AI\SideScrollingNPC.h">
+      <Filter>Source\BossTest\Variant_SideScrolling\AI</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\BossTest\Variant_SideScrolling\AI\SideScrollingStateTreeUtility.cpp">
+      <Filter>Source\BossTest\Variant_SideScrolling\AI</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\BossTest\Variant_SideScrolling\AI\SideScrollingStateTreeUtility.h">
+      <Filter>Source\BossTest\Variant_SideScrolling\AI</Filter>
+    </ClInclude>
+    <Filter Include="Source\BossTest\Variant_SideScrolling\Gameplay">
+      <UniqueIdentifier>{2FDA2424-431E-3570-87E9-92C6E9290EA1}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\BossTest\Variant_SideScrolling\Gameplay\SideScrollingJumpPad.cpp">
+      <Filter>Source\BossTest\Variant_SideScrolling\Gameplay</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\BossTest\Variant_SideScrolling\Gameplay\SideScrollingJumpPad.h">
+      <Filter>Source\BossTest\Variant_SideScrolling\Gameplay</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\BossTest\Variant_SideScrolling\Gameplay\SideScrollingMovingPlatform.cpp">
+      <Filter>Source\BossTest\Variant_SideScrolling\Gameplay</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\BossTest\Variant_SideScrolling\Gameplay\SideScrollingMovingPlatform.h">
+      <Filter>Source\BossTest\Variant_SideScrolling\Gameplay</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\BossTest\Variant_SideScrolling\Gameplay\SideScrollingPickup.cpp">
+      <Filter>Source\BossTest\Variant_SideScrolling\Gameplay</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\BossTest\Variant_SideScrolling\Gameplay\SideScrollingPickup.h">
+      <Filter>Source\BossTest\Variant_SideScrolling\Gameplay</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\BossTest\Variant_SideScrolling\Gameplay\SideScrollingSoftPlatform.cpp">
+      <Filter>Source\BossTest\Variant_SideScrolling\Gameplay</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\BossTest\Variant_SideScrolling\Gameplay\SideScrollingSoftPlatform.h">
+      <Filter>Source\BossTest\Variant_SideScrolling\Gameplay</Filter>
+    </ClInclude>
+    <Filter Include="Source\BossTest\Variant_SideScrolling\Interfaces">
+      <UniqueIdentifier>{AE6845C9-E3AB-33B9-8778-6629BE488032}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\BossTest\Variant_SideScrolling\Interfaces\SideScrollingInteractable.cpp">
+      <Filter>Source\BossTest\Variant_SideScrolling\Interfaces</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\BossTest\Variant_SideScrolling\Interfaces\SideScrollingInteractable.h">
+      <Filter>Source\BossTest\Variant_SideScrolling\Interfaces</Filter>
+    </ClInclude>
+    <Filter Include="Source\BossTest\Variant_SideScrolling\UI">
+      <UniqueIdentifier>{2D5AB84E-A550-341E-B753-53B1E855D6B3}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\BossTest\Variant_SideScrolling\UI\SideScrollingUI.cpp">
+      <Filter>Source\BossTest\Variant_SideScrolling\UI</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\BossTest\Variant_SideScrolling\UI\SideScrollingUI.h">
+      <Filter>Source\BossTest\Variant_SideScrolling\UI</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
