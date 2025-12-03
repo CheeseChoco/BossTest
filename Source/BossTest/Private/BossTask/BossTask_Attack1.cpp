@@ -1,6 +1,8 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+ï»¿// Fill out your copyright notice in the Description page of Project Settings.
 
 #include "BossTask/BossTask_Attack1.h"
+#include "BossTask/BossAttackData.h"
+#include "BossCharacter.h"
 #include "GameFramework/Character.h"
 #include "AIController.h"
 #include "Kismet/KismetMathLibrary.h"
@@ -10,64 +12,61 @@
 UBossTask_Attack1::UBossTask_Attack1(const FObjectInitializer& ObjectInitializer)
 	: Super(ObjectInitializer)
 {
-	bShouldCallTick = true; // ¸ùÅ¸ÁÖ ³¡³ª´Â °Å °¨½ÃÇØ¾ß ÇÔ
+	bShouldCallTick = true; // ëª½íƒ€ì£¼ ëë‚˜ëŠ” ê±° ê°ì‹œí•´ì•¼ í•¨
 }
 
 EStateTreeRunStatus UBossTask_Attack1::EnterState(FStateTreeExecutionContext& Context, const FStateTreeTransitionResult& Transition)
 {
 	AActor* OwnerActor = Cast<AActor>(Context.GetOwner());
-	ACharacter* BossCharacter = Cast<ACharacter>(OwnerActor);
-	AAIController* AIController = Cast<AAIController>(BossCharacter->GetController());
 
-	// ¹æ¾î ÄÚµå: ¸ùÅ¸ÁÖ°¡ ¾øÀ¸¸é °ø°İÀ» ¸øÇÔ -> ½ÇÆĞ Ã³¸®
-	if (!BossCharacter || !AttackMontage)
+	// ë‹˜ í”„ë¡œì íŠ¸ì˜ ì‹¤ì œ ë³´ìŠ¤ í´ë˜ìŠ¤ë¡œ ìºìŠ¤íŒ…
+	ABossCharacter* BossCharacter = Cast<ABossCharacter>(OwnerActor);
+
+	// ë°©ì–´ ì½”ë“œ: ë³´ìŠ¤ê°€ ì—†ê±°ë‚˜, ë°ì´í„° ì—ì…‹ì„ ì•ˆ ë¼ì›Œë†¨ë‹¤ë©´ ì‹¤íŒ¨!
+	if (!BossCharacter || !AttackData)
 	{
 		return EStateTreeRunStatus::Failed;
 	}
-	AIController->StopMovement();
-	// 1. °ø°İ ¸ùÅ¸ÁÖ Àç»ı!
-	float Duration = BossCharacter->PlayAnimMontage(AttackMontage, PlayRate);
 
-	if (Duration > 0.0f)
+	AAIController* AIController = Cast<AAIController>(BossCharacter->GetController());
+	if (AIController)
 	{
-		bIsMontagePlaying = true;
-		return EStateTreeRunStatus::Running; // Àç»ı ½ÃÀÛµÊ
+		AIController->StopMovement();
 	}
 
-	return EStateTreeRunStatus::Failed; // Àç»ı ½ÇÆĞ (¹º°¡ ²¿ÀÓ)
+	// âœ… [í•µì‹¬ ë³€ê²½] ë³´ìŠ¤ì•¼, ì´ ë°ì´í„°ëŒ€ë¡œ ê³µê²©í•´ë¼!
+	// (InitAttack í•¨ìˆ˜ ì•ˆì—ì„œ ëª½íƒ€ì£¼ ì¬ìƒê¹Œì§€ ë‹¤ ì²˜ë¦¬í•©ë‹ˆë‹¤)
+	BossCharacter->InitAttack(AttackData);
+
+	bIsMontagePlaying = true;
+	return EStateTreeRunStatus::Running;
 }
 
 EStateTreeRunStatus UBossTask_Attack1::Tick(FStateTreeExecutionContext& Context, const float DeltaTime)
 {
 	AActor* OwnerActor = Cast<AActor>(Context.GetOwner());
-	ACharacter* BossCharacter = Cast<ACharacter>(OwnerActor);
+	ABossCharacter* BossCharacter = Cast<ABossCharacter>(OwnerActor);
 
-	if (!BossCharacter) return EStateTreeRunStatus::Failed;
+	if (!BossCharacter || !AttackData) return EStateTreeRunStatus::Failed;
 
-	// 2. ¸ùÅ¸ÁÖ°¡ ¾ÆÁ÷ Àç»ı ÁßÀÎÁö È®ÀÎ
-	// (¸ùÅ¸ÁÖ°¡ ³¡³ª¸é PlayAnimMontage´Â 0.0À» ¸®ÅÏÇÏ°Å³ª, AnimInstance°¡ ¸ØÃãÀ» ¾Ë¸²)
-	// °¡Àå È®½ÇÇÑ ¹æ¹ı: ÇØ´ç ¸ùÅ¸ÁÖ°¡ Áö±İ µ¹¾Æ°¡°í ÀÖ´Ï?
+	// 2. ëª½íƒ€ì£¼ê°€ ëë‚¬ëŠ”ì§€ í™•ì¸
 	UAnimInstance* AnimInstance = BossCharacter->GetMesh()->GetAnimInstance();
-	if (AnimInstance && !AnimInstance->Montage_IsPlaying(AttackMontage))
+
+	// âœ… [ë³€ê²½] AttackData ì•ˆì— ë“¤ì–´ìˆëŠ” ëª½íƒ€ì£¼ë¥¼ ì²´í¬í•©ë‹ˆë‹¤.
+	if (AnimInstance && !AnimInstance->Montage_IsPlaying(AttackData->Montage))
 	{
-		// Àç»ıÀÌ ¸ØÃè´Ù = °ø°İ µ¿ÀÛ ³¡³µ´Ù!
-		return EStateTreeRunStatus::Succeeded;
+		return EStateTreeRunStatus::Succeeded; // ëë‚¨!
 	}
+
+	// 3. íšŒì „ ë¡œì§ (ì´ê±´ ê·¸ëŒ€ë¡œ ìœ ì§€)
 	if (bEnableRotation)
 	{
 		ACharacter* Player = UGameplayStatics::GetPlayerCharacter(this, 0);
 		if (Player)
 		{
-			// A. ¸ñÇ¥ È¸Àü°ª °è»ê (º¸½º -> ÇÃ·¹ÀÌ¾î ¹æÇâ)
 			FRotator TargetRot = UKismetMathLibrary::FindLookAtRotation(BossCharacter->GetActorLocation(), Player->GetActorLocation());
-
-			// B. ZÃà(Yaw)¸¸ È¸ÀüÇØ¾ß ÇÔ (º¸½º°¡ ÇÏ´Ã/¶¥À» º¸¸ç ±â¿ï¸é ¾È µÇ´Ï±î)
 			TargetRot = FRotator(0.0f, TargetRot.Yaw, 0.0f);
-
-			// C. ºÎµå·´°Ô È¸Àü (RInterpTo)
 			FRotator NewRot = FMath::RInterpTo(BossCharacter->GetActorRotation(), TargetRot, DeltaTime, RotationSpeed);
-
-			// D. Àû¿ë
 			BossCharacter->SetActorRotation(NewRot);
 		}
 	}

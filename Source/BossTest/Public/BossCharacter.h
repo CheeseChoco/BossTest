@@ -6,6 +6,8 @@
 #include "GameFramework/Character.h"
 #include "Components/BoxComponent.h"
 #include "Components/CapsuleComponent.h"
+#include "Components/SphereComponent.h"
+#include "BossTask/BossAttackData.h"
 #include "BossCharacter.generated.h"
 
 UCLASS()
@@ -21,6 +23,9 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Combat")
+	const class UBossAttackData* CurrentAttackData;
+
 	//히트박스 관리
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Combat")
 	UBoxComponent* RightFistBox;
@@ -30,6 +35,11 @@ protected:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Combat")
 	UCapsuleComponent* BodyChargeBox; // 몸통은 캡슐이 더 자연스럽습니다
+
+	//직접 짠 코드
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Combat")
+	USphereComponent* SlamSphere;
+
 
 	// 오버랩 함수는 하나로 재사용 가능합니다!
 	UFUNCTION()
@@ -48,4 +58,14 @@ public:
 	//히트박스 관리 함수
 	void SetAttackCollision(int32 PartIndex, bool bActive);
 
+	void InitAttack(const UBossAttackData* NewAttackData);
+
+	// 블루프린트(애님 노티파이)에서 부를 수 있게 UFUNCTION 붙임
+	UFUNCTION(BlueprintCallable)
+	void ActivateHitbox(bool bActive);
+
+	void ExecuteAttackEffect();
+
+	UFUNCTION(BlueprintCallable, Category = "Combat")
+	const UBossAttackData* GetCurrentAttackData() const { return CurrentAttackData; }
 };
