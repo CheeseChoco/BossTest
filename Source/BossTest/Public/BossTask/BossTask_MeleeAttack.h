@@ -5,17 +5,17 @@
 #include "CoreMinimal.h"
 #include "Blueprint/StateTreeTaskBlueprintBase.h"
 #include "BossTask/BossAttackData.h"
-#include "BossTask_Attack1.generated.h"
+#include "BossTask_MeleeAttack.generated.h"
 
 
 
 UCLASS()
-class BOSSTEST_API UBossTask_Attack1 : public UStateTreeTaskBlueprintBase
+class BOSSTEST_API UBossTask_MeleeAttack : public UStateTreeTaskBlueprintBase
 {
 	GENERATED_BODY()
 
 public:
-	UBossTask_Attack1(const FObjectInitializer& ObjectInitializer);
+	UBossTask_MeleeAttack(const FObjectInitializer& ObjectInitializer);
 
 	virtual EStateTreeRunStatus EnterState(FStateTreeExecutionContext& Context, const FStateTreeTransitionResult& Transition) override;
 	virtual EStateTreeRunStatus Tick(FStateTreeExecutionContext& Context, const float DeltaTime) override;

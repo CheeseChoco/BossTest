@@ -49,5 +49,13 @@ public:
     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "FX")
     TSubclassOf<UCameraShakeBase> CameraShake;
 
+    // [추가 1] 쏠 투사체 블루프린트 (여기에 BP_BossBullet을 넣게 됨)
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Projectile")
+    TSubclassOf<AActor> ProjectileClass;
+
+    // [추가 2] 총알이 나갈 소켓 이름 (예: "Muzzle_01")
+    // 이펙트 소켓이랑 다를 수 있어서 따로 파는 게 좋습니다.
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Projectile")
+    FName MuzzleSocketName;
     // (필요하면 데칼 정보 등 추가)
 };

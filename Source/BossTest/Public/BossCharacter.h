@@ -55,9 +55,6 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "AI|Animation")
 	UAnimMontage* AttackMontage;
 
-	//히트박스 관리 함수
-	void SetAttackCollision(int32 PartIndex, bool bActive);
-
 	void InitAttack(const UBossAttackData* NewAttackData);
 
 	// 블루프린트(애님 노티파이)에서 부를 수 있게 UFUNCTION 붙임
@@ -68,4 +65,7 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "Combat")
 	const UBossAttackData* GetCurrentAttackData() const { return CurrentAttackData; }
+
+	//투사체 발사 함수
+	void FireProjectile(FRotator FireRotation = FRotator::ZeroRotator);
 };

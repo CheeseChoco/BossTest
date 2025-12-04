@@ -1,21 +1,21 @@
 ﻿// Fill out your copyright notice in the Description page of Project Settings.
 
-#include "BossTask/BossTask_Attack1.h"
+#include "BossTask/BossTask_MeleeAttack.h"
 #include "BossTask/BossAttackData.h"
-#include "BossCharacter.h"
+#include "BossTask/BossCharacter.h"
 #include "GameFramework/Character.h"
 #include "AIController.h"
 #include "Kismet/KismetMathLibrary.h"
 #include "Kismet/GameplayStatics.h"
 #include "StateTreeExecutionContext.h"
 
-UBossTask_Attack1::UBossTask_Attack1(const FObjectInitializer& ObjectInitializer)
+UBossTask_MeleeAttack::UBossTask_MeleeAttack(const FObjectInitializer& ObjectInitializer)
 	: Super(ObjectInitializer)
 {
 	bShouldCallTick = true; // 몽타주 끝나는 거 감시해야 함
 }
 
-EStateTreeRunStatus UBossTask_Attack1::EnterState(FStateTreeExecutionContext& Context, const FStateTreeTransitionResult& Transition)
+EStateTreeRunStatus UBossTask_MeleeAttack::EnterState(FStateTreeExecutionContext& Context, const FStateTreeTransitionResult& Transition)
 {
 	AActor* OwnerActor = Cast<AActor>(Context.GetOwner());
 
@@ -42,7 +42,7 @@ EStateTreeRunStatus UBossTask_Attack1::EnterState(FStateTreeExecutionContext& Co
 	return EStateTreeRunStatus::Running;
 }
 
-EStateTreeRunStatus UBossTask_Attack1::Tick(FStateTreeExecutionContext& Context, const float DeltaTime)
+EStateTreeRunStatus UBossTask_MeleeAttack::Tick(FStateTreeExecutionContext& Context, const float DeltaTime)
 {
 	AActor* OwnerActor = Cast<AActor>(Context.GetOwner());
 	ABossCharacter* BossCharacter = Cast<ABossCharacter>(OwnerActor);

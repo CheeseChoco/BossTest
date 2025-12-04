@@ -1,6 +1,6 @@
 ﻿// Fill out your copyright notice in the Description page of Project Settings.
 
-#include "BossCharacter.h"
+#include "BossTask/BossCharacter.h"
 #include "BossTask/BossAttackData.h"
 #include "Kismet/GameplayStatics.h"
 
@@ -59,31 +59,6 @@ void ABossCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompo
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
-}
-
-void ABossCharacter::SetAttackCollision(int32 PartIndex, bool bActive)
-{
-    FName NewProfile = bActive ? TEXT("OverlapAllDynamic") : TEXT("NoCollision");
-
-    // PartIndex에 따라 켜는 부위를 다르게!
-    switch (PartIndex)
-    {
-    case 0: // 돌진 모드 (전부 다 켬 or 몸통만 켬)
-        BodyChargeBox->SetCollisionProfileName(NewProfile);
-        RightFistBox->SetCollisionProfileName(NewProfile);
-        LeftFistBox->SetCollisionProfileName(NewProfile);
-        break;
-    case 1: // 오른손 공격
-        BodyChargeBox->SetCollisionProfileName(NewProfile);
-        RightFistBox->SetCollisionProfileName(NewProfile);
-        break;
-    case 2: // 왼손 공격
-        BodyChargeBox->SetCollisionProfileName(NewProfile);
-        LeftFistBox->SetCollisionProfileName(NewProfile);
-        break;
-    case 3: //직접 짠 코드
-        SlamSphere->SetCollisionProfileName(NewProfile);
-    }
 }
 
 void ABossCharacter::OnAttackOverlap(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
@@ -171,7 +146,7 @@ void ABossCharacter::ExecuteAttackEffect()
 
     // 3. (선택 사항) 오프셋 더하기 (조금 앞, 조금 위 등 미세 조정)
     //SpawnLocation += CurrentAttackData->VFXOffset;
-
+        
 
     // 4. 최종 위치에 이펙트 쾅!
     if (CurrentAttackData->AttackVFX)
@@ -194,5 +169,50 @@ void ABossCharacter::ExecuteAttackEffect()
     if (CurrentAttackData->CameraShake)
     {
         UGameplayStatics::PlayWorldCameraShake(GetWorld(), CurrentAttackData->CameraShake, GetActorLocation(), 0, 1000, 1);
+    }
+}
+
+void ABossCharacter::FireProjectile(FRotator FireRotation)
+{
+    // 1. 데이터가 없거나, 쏠 투사체(BP)가 설정 안 되어 있으면 취소
+    if (!CurrentAttackData || !CurrentAttackData->ProjectileClass)
+    {
+        // 로그 한 번 찍어주면 디버깅할 때 좋습니다.
+        // UE_LOG(LogTemp, Warning, TEXT("No Projectile Class in Data Asset!"));
+        return;
+    }
+
+    // 2. 발사 위치(Socket) 찾기
+    FVector MuzzleLoc = GetActorLocation(); // 소켓 못 찾으면 몸통 위치
+    FRotator MuzzleRot = GetActorRotation(); // 소켓 못 찾으면 몸통 회전
+
+    // 데이터 에셋에 적힌 소켓 이름("Muzzle_01")으로 위치 찾기
+    if (!CurrentAttackData->MuzzleSocketName.IsNone())
+    {
+        MuzzleLoc = GetMesh()->GetSocketLocation(CurrentAttackData->MuzzleSocketName);
+        MuzzleRot = GetMesh()->GetSocketRotation(CurrentAttackData->MuzzleSocketName);
+    }
+
+    // 3. 발사 방향 결정
+    // 인자로 들어온 FireRotation이 있으면(난사 패턴 등) 그걸 쓰고,
+    // 없으면(ZeroRotator) 그냥 소켓이 보는 정면(직사)으로 쏨
+    FRotator FinalRot = FireRotation.IsZero() ? MuzzleRot : FireRotation;
+
+    // 4. 진짜 생성 (Spawn)
+    FActorSpawnParameters SpawnParams;
+    SpawnParams.Owner = this;      // 총알 주인은 나 (팀킬 방지용)
+    SpawnParams.Instigator = this; // 가해자도 나
+
+    GetWorld()->SpawnActor<AActor>(
+        CurrentAttackData->ProjectileClass, // 데이터 에셋에 넣은 BP
+        MuzzleLoc,                          // 소켓 위치
+        FinalRot,                           // 계산된 회전
+        SpawnParams
+    );
+
+    // (선택) 발사음 재생
+    if (CurrentAttackData->AttackSound)
+    {
+        UGameplayStatics::PlaySoundAtLocation(this, CurrentAttackData->AttackSound, MuzzleLoc);
     }
 }

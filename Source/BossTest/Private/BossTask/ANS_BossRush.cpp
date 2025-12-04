@@ -1,6 +1,6 @@
 ﻿#include "BossTask/ANS_BossRush.h"
 #include "BossTask/BossAttackData.h"
-#include "BossCharacter.h"
+#include "BossTask/BossCharacter.h"
 #include "GameFramework/Character.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Particles/ParticleSystemComponent.h"
