@@ -1,6 +1,6 @@
 #include "BossTask/ANS_AttackHitCheck.h"
 #include "BossTask/BossCharacter.h" // 보스 헤더 필요
-#include "BossTask/BossTest.h"
+#include "BossTest.h"
 
 
 void UANS_AttackHitCheck::NotifyBegin(USkeletalMeshComponent* MeshComp, UAnimSequenceBase* Animation, float TotalDuration, const FAnimNotifyEventReference& EventReference)

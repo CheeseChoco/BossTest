@@ -48,6 +48,14 @@ void ABossProjectile::BeginPlay()
 {
 	Super::BeginPlay();
 
+	AActor* MyOwner = GetOwner();
+	if (MyOwner && CollisionComp)
+	{
+		// 2. "너(CollisionComp) 움직일 때, 우리 주인님(MyOwner)은 제발 무시해라" 라고 설정
+		CollisionComp->IgnoreActorWhenMoving(MyOwner, true);
+	}
+
+
 	// 만약 블루프린트에서 'IsHomingProjectile'을 켜놨다면?
 	if (ProjectileMovement->bIsHomingProjectile)
 	{

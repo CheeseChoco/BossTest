@@ -3,6 +3,7 @@
 #include "BossTask/BossCharacter.h"
 #include "BossTask/BossAttackData.h"
 #include "Kismet/GameplayStatics.h"
+#include <Kismet/KismetMathLibrary.h>
 
 
 // Sets default values
@@ -175,28 +176,36 @@ void ABossCharacter::ExecuteAttackEffect()
 void ABossCharacter::FireProjectile(FRotator FireRotation)
 {
     // 1. 데이터가 없거나, 쏠 투사체(BP)가 설정 안 되어 있으면 취소
-    if (!CurrentAttackData || !CurrentAttackData->ProjectileClass)
-    {
-        // 로그 한 번 찍어주면 디버깅할 때 좋습니다.
-        // UE_LOG(LogTemp, Warning, TEXT("No Projectile Class in Data Asset!"));
-        return;
-    }
+    if (!CurrentAttackData || !CurrentAttackData->ProjectileClass) return;
 
     // 2. 발사 위치(Socket) 찾기
     FVector MuzzleLoc = GetActorLocation(); // 소켓 못 찾으면 몸통 위치
-    FRotator MuzzleRot = GetActorRotation(); // 소켓 못 찾으면 몸통 회전
 
     // 데이터 에셋에 적힌 소켓 이름("Muzzle_01")으로 위치 찾기
     if (!CurrentAttackData->MuzzleSocketName.IsNone())
     {
         MuzzleLoc = GetMesh()->GetSocketLocation(CurrentAttackData->MuzzleSocketName);
-        MuzzleRot = GetMesh()->GetSocketRotation(CurrentAttackData->MuzzleSocketName);
     }
 
-    // 3. 발사 방향 결정
-    // 인자로 들어온 FireRotation이 있으면(난사 패턴 등) 그걸 쓰고,
-    // 없으면(ZeroRotator) 그냥 소켓이 보는 정면(직사)으로 쏨
-    FRotator FinalRot = FireRotation.IsZero() ? MuzzleRot : FireRotation;
+    FRotator SpawnRotation;
+    ACharacter* Player = UGameplayStatics::GetPlayerCharacter(this, 0);
+    //if (Player)
+    //{
+    //    // 시작점(총구)에서 목표점(플레이어)을 바라보는 회전값 계산
+    //    // (플레이어의 캡슐 중심보다 약간 위나 Mesh 위치를 노리면 더 정확합니다)
+    //    FVector TargetLocation = Player->GetActorLocation();
+
+    //    SpawnRotation = UKismetMathLibrary::FindLookAtRotation(MuzzleLoc, TargetLocation);
+    //}
+    //else
+    //{
+        // 플레이어가 없으면 그냥 보스 정면으로 발사
+    SpawnRotation = GetActorRotation();
+    //}
+
+    float FRand = CurrentAttackData->FRand;
+    SpawnRotation.Pitch += FMath::FRandRange(-FRand, FRand);
+    SpawnRotation.Yaw += FMath::FRandRange(-FRand, FRand);
 
     // 4. 진짜 생성 (Spawn)
     FActorSpawnParameters SpawnParams;
@@ -206,7 +215,7 @@ void ABossCharacter::FireProjectile(FRotator FireRotation)
     GetWorld()->SpawnActor<AActor>(
         CurrentAttackData->ProjectileClass, // 데이터 에셋에 넣은 BP
         MuzzleLoc,                          // 소켓 위치
-        FinalRot,                           // 계산된 회전
+        SpawnRotation,                           // 계산된 회전
         SpawnParams
     );
 

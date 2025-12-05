@@ -68,4 +68,5 @@ public:
 
 	//투사체 발사 함수
 	void FireProjectile(FRotator FireRotation = FRotator::ZeroRotator);
+
 };

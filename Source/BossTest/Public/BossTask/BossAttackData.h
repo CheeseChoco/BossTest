@@ -58,4 +58,8 @@ public:
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Projectile")
     FName MuzzleSocketName;
     // (필요하면 데칼 정보 등 추가)
+
+
+    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Combat")
+    float FRand = 1.0f;
 };
