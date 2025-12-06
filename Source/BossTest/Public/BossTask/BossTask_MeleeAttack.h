@@ -28,13 +28,4 @@ protected:
 	// 내부 변수: 몽타주가 끝났는지 체크용
 	bool bIsMontagePlaying = false;
 
-	// --- 회전 관련 옵션은 AI 행동(Task)의 영역이라 남겨둬도 좋습니다 ---
-
-	// 공격 중에 회전할 것인가?
-	UPROPERTY(EditAnywhere, Category = "Parameter")
-	bool bEnableRotation = true;
-
-	// 회전 속도
-	UPROPERTY(EditAnywhere, Category = "Parameter")
-	float RotationSpeed = 5.0f;
 };

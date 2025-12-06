@@ -31,18 +31,6 @@ private:
 	//몽타주 끝?
 	bool bIsMontagePlaying = false;
 
-	//보스 회전
-	UPROPERTY(EditAnywhere, Category = "Parameter")
-	bool bEnableRotation = true;
-
-	UPROPERTY(EditAnywhere, Category = "Parameter")
-	float RotationSpeed = 5.0f;
-
-	UPROPERTY(EditAnywhere, Category = "Parameter")
-	float FireCoolTime;
-
-	UPROPERTY(EditAnywhere, Category = "Parameter")
-	float MoveSpeed = 600.0f;
 
 	float FireTime = 0.0f;
 

@@ -18,7 +18,7 @@ UBossTask_RapidFire::UBossTask_RapidFire(const FObjectInitializer& ObjectInitial
 }
 
 EStateTreeRunStatus UBossTask_RapidFire::EnterState(FStateTreeExecutionContext& Context, const FStateTreeTransitionResult& Transition) {
-	//UE_LOG(LogBossTest, Error, TEXT("EnterState Fire"));
+	UE_LOG(LogBossTest, Error, TEXT("EnterState Fire"));
 
 	AActor* OwnerActor = Cast<AActor>(Context.GetOwner());
 	ABossCharacter* BossCharacter = Cast<ABossCharacter>(OwnerActor);
@@ -55,7 +55,7 @@ EStateTreeRunStatus UBossTask_RapidFire::EnterState(FStateTreeExecutionContext& 
 			// 3. 이동 목표 설정 (예: 600유닛 이동, 필요시 거리 조절)
 			if (MoveDir != 0.0f)
 			{
-				FVector MoveDest = BossLoc + (BossRight * MoveDir * MoveSpeed);
+				FVector MoveDest = BossLoc + (BossRight * MoveDir * AttackData->MoveSpeed);
 				BossCharacter->GetCharacterMovement()->bOrientRotationToMovement = false;
 				AIController->MoveToLocation(MoveDest);
 
@@ -73,7 +73,7 @@ EStateTreeRunStatus UBossTask_RapidFire::Tick(FStateTreeExecutionContext& Contex
 	ABossCharacter* BossCharacter = Cast<ABossCharacter>(OwnerActor);
 	
 	if (!BossCharacter || !AttackData) return EStateTreeRunStatus::Failed;
-	if (bEnableRotation){
+	if (AttackData->bEnableRotation){
 		TracePlayer(BossCharacter, DeltaTime);
 	}
 
@@ -93,19 +93,19 @@ void UBossTask_RapidFire::TracePlayer(ABossCharacter* BossCharacter, float Delta
 	if (Player) {
 		FRotator TargetRot = UKismetMathLibrary::FindLookAtRotation(BossCharacter->GetActorLocation(), Player->GetActorLocation());
 		TargetRot = FRotator(0.0f, TargetRot.Yaw, 0.0f);
-		FRotator NewRot = FMath::RInterpTo(BossCharacter->GetActorRotation(), TargetRot, DeltaTime, RotationSpeed);
+		FRotator NewRot = FMath::RInterpTo(BossCharacter->GetActorRotation(), TargetRot, DeltaTime, AttackData->RotationSpeed);
 		BossCharacter->SetActorRotation(NewRot);
 	}
 }
 
 void UBossTask_RapidFire::FireBullet(ABossCharacter* BossCharacter, float DeltaTime) {
-	//UE_LOG(LogBossTest, Error, TEXT("Enter FireBullet"));
+	UE_LOG(LogBossTest, Error, TEXT("Enter FireBullet"));
 	FireTime += DeltaTime;
 
-	if (FireTime >= FireCoolTime) {
-		//UE_LOG(LogBossTest, Error, TEXT("Fire!"));
+	if (FireTime >= AttackData->FireCoolTime) {
+		UE_LOG(LogBossTest, Error, TEXT("Fire!"));
 		BossCharacter->FireProjectile();
-		FireTime -= FireCoolTime;
+		FireTime -= AttackData->FireCoolTime;
 	}
 }
 

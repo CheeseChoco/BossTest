@@ -3,6 +3,7 @@
 #include "BossTask/BossTask_MeleeAttack.h"
 #include "BossTask/BossAttackData.h"
 #include "BossTask/BossCharacter.h"
+#include "BossTest.h"
 #include "GameFramework/Character.h"
 #include "AIController.h"
 #include "Kismet/KismetMathLibrary.h"
@@ -17,6 +18,7 @@ UBossTask_MeleeAttack::UBossTask_MeleeAttack(const FObjectInitializer& ObjectIni
 
 EStateTreeRunStatus UBossTask_MeleeAttack::EnterState(FStateTreeExecutionContext& Context, const FStateTreeTransitionResult& Transition)
 {
+	UE_LOG(LogBossTest, Error, TEXT("Melee Enter"));
 	AActor* OwnerActor = Cast<AActor>(Context.GetOwner());
 
 	// 님 프로젝트의 실제 보스 클래스로 캐스팅
@@ -25,6 +27,7 @@ EStateTreeRunStatus UBossTask_MeleeAttack::EnterState(FStateTreeExecutionContext
 	// 방어 코드: 보스가 없거나, 데이터 에셋을 안 끼워놨다면 실패!
 	if (!BossCharacter || !AttackData)
 	{
+		UE_LOG(LogBossTest, Error, TEXT("None AttackData"));
 		return EStateTreeRunStatus::Failed;
 	}
 
@@ -59,14 +62,14 @@ EStateTreeRunStatus UBossTask_MeleeAttack::Tick(FStateTreeExecutionContext& Cont
 	}
 
 	// 3. 회전 로직 (이건 그대로 유지)
-	if (bEnableRotation)
+	if (AttackData->bEnableRotation)
 	{
 		ACharacter* Player = UGameplayStatics::GetPlayerCharacter(this, 0);
 		if (Player)
 		{
 			FRotator TargetRot = UKismetMathLibrary::FindLookAtRotation(BossCharacter->GetActorLocation(), Player->GetActorLocation());
 			TargetRot = FRotator(0.0f, TargetRot.Yaw, 0.0f);
-			FRotator NewRot = FMath::RInterpTo(BossCharacter->GetActorRotation(), TargetRot, DeltaTime, RotationSpeed);
+			FRotator NewRot = FMath::RInterpTo(BossCharacter->GetActorRotation(), TargetRot, DeltaTime, AttackData->RotationSpeed);
 			BossCharacter->SetActorRotation(NewRot);
 		}
 	}

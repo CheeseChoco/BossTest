@@ -69,4 +69,10 @@ public:
 	//투사체 발사 함수
 	void FireProjectile(FRotator FireRotation = FRotator::ZeroRotator);
 
+	int MaxHP;
+	int CurrentHP;
+
+	//시작용 패턴
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "AI|Config")
+	class UBossAttackData* StartPattern;
 };

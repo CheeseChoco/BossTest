@@ -2,6 +2,7 @@
 
 #include "BossTask/BossCharacter.h"
 #include "BossTask/BossAttackData.h"
+#include "BossTask/BossAIController.h"
 #include "Kismet/GameplayStatics.h"
 #include <Kismet/KismetMathLibrary.h>
 
@@ -11,6 +12,9 @@ ABossCharacter::ABossCharacter()
 {
  	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
+
+    // [핵심] 이 보스가 스폰될 때, 기본으로 사용할 AI 컨트롤러 클래스를 지정합니다.
+    AIControllerClass = ABossAIController::StaticClass();
 
 	AutoPossessAI = EAutoPossessAI::PlacedInWorldOrSpawned;
 	bUseControllerRotationYaw = false;
@@ -34,6 +38,7 @@ ABossCharacter::ABossCharacter()
     SlamSphere = CreateDefaultSubobject<USphereComponent>(TEXT("SlamSphere"));
     SlamSphere->SetupAttachment(GetMesh(), TEXT("LeftHandSocket"));
     SlamSphere->SetCollisionProfileName(TEXT("NoCollision"));
+
 }
 
 // Called when the game starts or when spawned
