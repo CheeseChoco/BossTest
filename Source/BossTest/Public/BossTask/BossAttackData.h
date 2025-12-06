@@ -60,6 +60,9 @@ public:
     // (필요하면 데칼 정보 등 추가)
 
 
-    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Combat")
+    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Projectile")
     float FRand = 1.0f;
+
+    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Combat")
+    float CooldownTime = 0.0f; // 0이면 쿨타임 없음
 };
