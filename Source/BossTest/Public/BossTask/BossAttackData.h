@@ -11,6 +11,7 @@ enum class EBossPatternCategory : uint8
     Melee       UMETA(DisplayName = "근접 공격"),
     Charge      UMETA(DisplayName = "돌진/추격"),
     Ranged      UMETA(DisplayName = "원거리"),
+    Takedown    UMETA(DisplayName = "공중찍기"),
     Special     UMETA(DisplayName = "특수 패턴")
 };
 
@@ -158,4 +159,18 @@ public:
 
     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Range", meta = (EditCondition = "PatternCategory == EBossPatternCategory::Ranged", EditConditionHides))
     float FRand = 1.0f;
+
+
+    //Takedown 패턴용
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Takedown", meta = (EditCondition = "PatternCategory == EBossPatternCategory::Takedown", EditConditionHides))
+    float JumpHeight = 1500.0f;
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Takedown", meta = (EditCondition = "PatternCategory == EBossPatternCategory::Takedown", EditConditionHides))
+    float HoverDuration = 1.0f; // 공중에서 째려보는 시간
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Takedown", meta = (EditCondition = "PatternCategory == EBossPatternCategory::Takedown", EditConditionHides))
+    float SlamTimeToReach = 0.5f;
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Takedown", meta = (EditCondition = "PatternCategory == EBossPatternCategory::Takedown", EditConditionHides))
+    float DamageRadius = 500.0f;
 };

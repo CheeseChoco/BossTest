@@ -99,7 +99,7 @@ void UBossTask_RapidFire::TracePlayer(ABossCharacter* BossCharacter, float Delta
 }
 
 void UBossTask_RapidFire::FireBullet(ABossCharacter* BossCharacter, float DeltaTime) {
-	UE_LOG(LogBossTest, Error, TEXT("Enter FireBullet"));
+	//UE_LOG(LogBossTest, Error, TEXT("Enter FireBullet"));
 	FireTime += DeltaTime;
 
 	if (FireTime >= AttackData->FireCoolTime) {
