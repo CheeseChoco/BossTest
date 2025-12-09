@@ -12,6 +12,7 @@ enum class EBossPatternCategory : uint8
     Charge      UMETA(DisplayName = "돌진/추격"),
     Ranged      UMETA(DisplayName = "원거리"),
     Takedown    UMETA(DisplayName = "공중찍기"),
+    Stump       UMETA(DisplayName = "찍기"),
     Special     UMETA(DisplayName = "특수 패턴")
 };
 
@@ -173,4 +174,12 @@ public:
 
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Takedown", meta = (EditCondition = "PatternCategory == EBossPatternCategory::Takedown", EditConditionHides))
     float DamageRadius = 500.0f;
+
+
+    //Stump 패턴용
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Stump", meta = (EditCondition = "PatternCategory == EBossPatternCategory::Stump", EditConditionHides))
+    float StumpPlayRate = 2.0;
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Stump", meta = (EditCondition = "PatternCategory == EBossPatternCategory::Stump", EditConditionHides))
+    float StumpApexTime = 2.0;
+
 };

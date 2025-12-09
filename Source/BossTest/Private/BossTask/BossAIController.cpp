@@ -61,12 +61,14 @@ UBossAttackData* ABossAIController::SelectAttackPattern(const TArray<UBossAttack
     {
         if (!Data) continue;
 
+        //if (Data->MinHPPercent < )
         // 거리/각도 조건 안 맞으면 탈락
         if (Dist < Data->MinRange || Dist > Data->MaxRange) continue;
         if (Angle > Data->RequiredHitAngle) continue;
         //좌 우측 체크
         if (Data->RequiredSide == ETargetSideRequirement::Left && RightDot > 0.0f) continue;
         if (Data->RequiredSide == ETargetSideRequirement::Right && RightDot < 0.0f) continue;
+        if (!CanUseAttack(Data)) continue;
 
         ValidPool.Add(Data);
         TotalWeight += Data->SelectionWeight;
@@ -86,10 +88,47 @@ UBossAttackData* ABossAIController::SelectAttackPattern(const TArray<UBossAttack
         if (RandomPoint <= CurrentSum)
         {
             LastUsedPattern = Data; // 선택 기억
+            StartCooldown(Data);
             return Data;
         }
     }
 
+
+    StartCooldown(ValidPool.Last());
     LastUsedPattern = ValidPool.Last();
     return ValidPool.Last();
+}
+
+bool ABossAIController::CanUseAttack(UBossAttackData* AttackData)
+{
+    if (!AttackData) return false;
+
+    // 1. 장부에 기록된 적이 없으면? -> 사용 가능 (한 번도 안 썼으니까)
+    if (!AttackHistory.Contains(AttackData))
+    {
+        return true;
+    }
+
+    // 2. 마지막 사용 시간 가져오기
+    double LastUsedTime = AttackHistory[AttackData];
+
+    // 3. 현재 시간 가져오기
+    double CurrentTime = GetWorld()->GetTimeSeconds();
+
+    // 4. (현재 시간 - 마지막 시간)이 쿨타임보다 크면 사용 가능!
+    if ((CurrentTime - LastUsedTime) >= AttackData->CooldownTime)
+    {
+        return true;
+    }
+
+    // 아직 쿨타임 안 돌았음
+    return false;
+}
+
+void ABossAIController::StartCooldown(UBossAttackData* AttackData)
+{
+    if (!AttackData) return;
+
+    // 현재 시간을 장부에 기록 (덮어쓰기)
+    AttackHistory.Add(AttackData, GetWorld()->GetTimeSeconds());
 }

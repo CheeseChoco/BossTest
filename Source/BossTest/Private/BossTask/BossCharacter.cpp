@@ -79,7 +79,7 @@ void ABossCharacter::OnAttackOverlap(UPrimitiveComponent* OverlappedComp, AActor
         //UGameplayStatics::ApplyDamage(OtherActor, 10.0f, GetController(), this, UDamageType::StaticClass());
 
         // (선택) 타격 이펙트/사운드 재생 코드 추가 가능
-        UE_LOG(LogTemp, Warning, TEXT("Player Hit!"));
+        //UE_LOG(LogTemp, Warning, TEXT("Player Hit!"));
     }
 }
 

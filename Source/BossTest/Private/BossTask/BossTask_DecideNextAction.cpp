@@ -53,7 +53,7 @@ EStateTreeRunStatus UBossTask_DecideNextAction::EnterState(FStateTreeExecutionCo
 	// -------------------------------------------------------
 	UBossAttackData* BestPick = BossAI->SelectAttackPattern(Candidates);
 
-	UE_LOG(LogBossTest, Warning, TEXT("Final Decision: %s"), BestPick ? *BestPick->GetName() : TEXT("None"));
+	//UE_LOG(LogBossTest, Warning, TEXT("Final Decision: %s"), BestPick ? *BestPick->GetName() : TEXT("None"));
 
 	if (BestPick)
 	{

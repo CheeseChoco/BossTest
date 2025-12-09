@@ -22,7 +22,7 @@ EStateTreeRunStatus UBossTask_Chase::EnterState(FStateTreeExecutionContext& Cont
 
 	if (!OwnerActor)
 	{
-		UE_LOG(LogBossAI, Error, TEXT("EnterState Failed: Owner is missing."));
+		//UE_LOG(LogBossAI, Error, TEXT("EnterState Failed: Owner is missing."));
 		return EStateTreeRunStatus::Failed;
 	}
 	// 2. Pawn -> AIController 가져오기
@@ -34,7 +34,7 @@ EStateTreeRunStatus UBossTask_Chase::EnterState(FStateTreeExecutionContext& Cont
 
 	if (!OwnerController)
 	{
-		UE_LOG(LogBossAI, Error, TEXT("EnterState Failed: AIController missing. Check 'Auto Possess AI'."));
+		//UE_LOG(LogBossAI, Error, TEXT("EnterState Failed: AIController missing. Check 'Auto Possess AI'."));
 		return EStateTreeRunStatus::Failed;
 	}
 
@@ -73,7 +73,7 @@ EStateTreeRunStatus UBossTask_Chase::Tick(FStateTreeExecutionContext& Context, c
 	if (OwnerController->GetMoveStatus() == EPathFollowingStatus::Idle)
 	{
 		// 도착도 안 했는데 멈췄다? = 길을 잃었거나 막힘
-		UE_LOG(LogBossAI, Warning, TEXT("Chase Stuck: Movement stopped but target not reached."));
+		//(LogBossAI, Warning, TEXT("Chase Stuck: Movement stopped but target not reached."));
 		return EStateTreeRunStatus::Failed;
 	}
 
@@ -96,5 +96,5 @@ void UBossTask_Chase::ExitState(FStateTreeExecutionContext& Context, const FStat
 	}
 
 	// 로그 확인용
-	UE_LOG(LogBossAI, Display, TEXT("Chase State Exited. Movement Stopped."));
+	//UE_LOG(LogBossAI, Display, TEXT("Chase State Exited. Movement Stopped."));
 }

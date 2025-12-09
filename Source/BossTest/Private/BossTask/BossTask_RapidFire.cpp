@@ -18,7 +18,7 @@ UBossTask_RapidFire::UBossTask_RapidFire(const FObjectInitializer& ObjectInitial
 }
 
 EStateTreeRunStatus UBossTask_RapidFire::EnterState(FStateTreeExecutionContext& Context, const FStateTreeTransitionResult& Transition) {
-	UE_LOG(LogBossTest, Error, TEXT("EnterState Fire"));
+	//UE_LOG(LogBossTest, Error, TEXT("EnterState Fire"));
 
 	AActor* OwnerActor = Cast<AActor>(Context.GetOwner());
 	ABossCharacter* BossCharacter = Cast<ABossCharacter>(OwnerActor);
@@ -103,7 +103,7 @@ void UBossTask_RapidFire::FireBullet(ABossCharacter* BossCharacter, float DeltaT
 	FireTime += DeltaTime;
 
 	if (FireTime >= AttackData->FireCoolTime) {
-		UE_LOG(LogBossTest, Error, TEXT("Fire!"));
+		//UE_LOG(LogBossTest, Error, TEXT("Fire!"));
 		BossCharacter->FireProjectile();
 		FireTime -= AttackData->FireCoolTime;
 	}

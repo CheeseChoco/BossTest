@@ -101,7 +101,7 @@ void ABossProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UP
 		return;
 	}
 
-	UE_LOG(LogBossTest, Error, TEXT("Projectile_Hit"));
+	//UE_LOG(LogBossTest, Error, TEXT("Projectile_Hit"));
 
 	// 4. 임무 완료 - 자폭
 	Destroy();

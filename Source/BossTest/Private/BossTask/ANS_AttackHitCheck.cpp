@@ -12,7 +12,7 @@ void UANS_AttackHitCheck::NotifyBegin(USkeletalMeshComponent* MeshComp, UAnimSeq
 		ABossCharacter* Boss = Cast<ABossCharacter>(MeshComp->GetOwner());
 		if (Boss)
 		{
-			UE_LOG(LogBossTest, Error, TEXT("NotifyBegin"));
+			//UE_LOG(LogBossTest, Error, TEXT("NotifyBegin"));
 			// 시작될 때 켬 (Index에 맞는 부위만)
 			Boss->ActivateHitbox(true);
 		}
@@ -28,7 +28,7 @@ void UANS_AttackHitCheck::NotifyEnd(USkeletalMeshComponent* MeshComp, UAnimSeque
 		ABossCharacter* Boss = Cast<ABossCharacter>(MeshComp->GetOwner());
 		if (Boss)
 		{
-			UE_LOG(LogBossTest, Error, TEXT("NotifyEnd"));
+			//UE_LOG(LogBossTest, Error, TEXT("NotifyEnd"));
 			// 끝날 때 끔 (Index에 맞는 부위만)
 			Boss->ActivateHitbox(false);
 		}

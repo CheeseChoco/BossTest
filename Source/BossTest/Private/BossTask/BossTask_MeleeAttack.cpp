@@ -18,7 +18,7 @@ UBossTask_MeleeAttack::UBossTask_MeleeAttack(const FObjectInitializer& ObjectIni
 
 EStateTreeRunStatus UBossTask_MeleeAttack::EnterState(FStateTreeExecutionContext& Context, const FStateTreeTransitionResult& Transition)
 {
-	UE_LOG(LogBossTest, Error, TEXT("Melee Enter"));
+	//UE_LOG(LogBossTest, Error, TEXT("Melee Enter"));
 	AActor* OwnerActor = Cast<AActor>(Context.GetOwner());
 
 	// 님 프로젝트의 실제 보스 클래스로 캐스팅
@@ -27,7 +27,7 @@ EStateTreeRunStatus UBossTask_MeleeAttack::EnterState(FStateTreeExecutionContext
 	// 방어 코드: 보스가 없거나, 데이터 에셋을 안 끼워놨다면 실패!
 	if (!BossCharacter || !AttackData)
 	{
-		UE_LOG(LogBossTest, Error, TEXT("None AttackData"));
+		//UE_LOG(LogBossTest, Error, TEXT("None AttackData"));
 		return EStateTreeRunStatus::Failed;
 	}
 

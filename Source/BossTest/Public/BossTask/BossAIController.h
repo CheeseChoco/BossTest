@@ -1,4 +1,4 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+ï»¿// Fill out your copyright notice in the Description page of Project Settings.
 
 #pragma once
 
@@ -16,7 +16,7 @@ class BOSSTEST_API ABossAIController : public AAIController
 public:
     ABossAIController();
 
-    // AI°¡ ´ÙÀ½¿¡ ¾µ ½ºÅ³À» °í¸£´Â ÇÙ½É ÇÔ¼ö
+    // AIê°€ ë‹¤ìŒì— ì“¸ ìŠ¤í‚¬ì„ ê³ ë¥´ëŠ” í•µì‹¬ í•¨ìˆ˜
     UFUNCTION(BlueprintCallable, Category = "Boss AI")
     UBossAttackData* SelectAttackPattern(const TArray<UBossAttackData*>& AvailablePatterns);
 
@@ -26,9 +26,17 @@ public:
     UFUNCTION(BlueprintPure, Category = "Boss AI")
     bool IsComboActive() const;
 
-    // °¡Àå ÃÖ±Ù¿¡ »ç¿ëÇÑ ÆĞÅÏÀ» ±â¾ï (¿¬¼Ó »ç¿ë ±İÁö Ã¼Å©¿ë)
+    // ê°€ì¥ ìµœê·¼ì— ì‚¬ìš©í•œ íŒ¨í„´ì„ ê¸°ì–µ (ì—°ì† ì‚¬ìš© ê¸ˆì§€ ì²´í¬ìš©)
     UPROPERTY(VisibleInstanceOnly, Category = "Boss AI")
     UBossAttackData* LastUsedPattern;
+
+    // âœ… ìŠ¤í‚¬ ì‚¬ìš© ê°€ëŠ¥ ì—¬ë¶€ í™•ì¸ í•¨ìˆ˜
+    bool CanUseAttack(UBossAttackData* AttackData);
+
+    // âœ… ìŠ¤í‚¬ ì‚¬ìš© í›„ ì¿¨íƒ€ì„ ê¸°ë¡ í•¨ìˆ˜
+    void StartCooldown(UBossAttackData* AttackData);
 	
+private:
+    TMap<UBossAttackData*, double> AttackHistory;
 };
 
